@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS marks(
   examDate DATE,
   grade TINYINT NOT NULL,
   studentIdPK INTEGER,
-  FOREIGN KEY (studentIdPK)  REFERENCES student (id)
+  FOREIGN KEY (studentIdPK)  REFERENCES students (id)
 );
 
 INSERT INTO students VALUES 
