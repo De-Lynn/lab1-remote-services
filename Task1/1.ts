@@ -1,8 +1,6 @@
 import { writeFileSync } from "fs";
 import path from "path";
 
-const { lesson } = process.env;
-
 // Part 1
 const filePathForTask1 = path.resolve(__dirname, "output", "output1.json");
 const { arr_length } = process.env;
