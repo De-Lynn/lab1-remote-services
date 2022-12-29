@@ -1,0 +1,33 @@
+stages:
+  - build
+  - run
+
+task1:
+  stage: run
+  script: 
+    - docker build . -t task1:latest
+    - docker-compose up --abort-on-container-exit
+  artifacts:
+    paths:
+      - ./output/output1.json
+      
+task-python:
+    stage: build
+    image: tmaier/docker-compose:latest
+    services:
+        - docker:20.10.16-dind
+    before_script:
+        - ls
+        - docker-compose --version
+    script:     
+        - echo START TEST!!!
+        - docker info
+        - docker-compose --version
+        - docker-compose up -d
+        - docker-compose logs client
+        - docker-compose logs --no-log-prefix client > result.txt
+        - docker-compose stop
+        - docker-compose rm -f
+    artifacts:
+        paths:
+            - result.txt
