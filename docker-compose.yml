@@ -1,4 +1,12 @@
 services:
+    app:
+        container_name: task1
+        environment:
+            - arr_length=${arr_length}
+        image: task1:latest
+        volumes:
+            - ./output:/output
+
     client:
         build: Task2/.
         container_name: client
