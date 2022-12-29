@@ -1,0 +1,18 @@
+{
+  "name": "task1",
+  "version": "1.0.0",
+  "main": "1.ts",
+  "scripts": {
+    "start": "node 1.js"
+  },
+  "repository": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.15"
+  }
+}

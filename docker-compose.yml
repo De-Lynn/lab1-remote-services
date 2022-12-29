@@ -1,0 +1,28 @@
+services:
+    app:
+        container_name: task1
+        environment:
+            - arr_length=${arr_length}
+        image: task1:latest
+        volumes:
+            - ./output:/output
+
+    client:
+        build: Task2/.
+        container_name: client
+        depends_on:
+            mysql-service:
+                condition: service_healthy
+        
+    mysql-service:
+        image: mysql:latest
+        container_name: mysql-service
+        volumes:
+            - ./Task2/init.sql:/home/init.sql
+        command: --init-file /home/init.sql
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
